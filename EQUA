@@ -1,0 +1,32 @@
+#include <iostream>
+#include <sstream>
+#include <vector>
+using namespace std;
+void Solutions(int n) {
+    int ans = 0;
+    for (int y = n + 1; y <= n * n + n; y++) {        
+        if ((n * n) % (y - n) == 0) {
+            ans += 1;
+        }
+    }
+    cout << ans << endl;
+}
+
+int main() {
+    string line;
+    int num1, num2, product, N ;
+    vector<int> products;
+    cout << "Enter pairs of numbers (one pair per line). Press enter to stop: " << endl;
+    while(getline(cin, line)) {
+        istringstream iss(line);
+        if(!(iss >> num1 >> num2)) break;
+        product = num1 * num2;
+        products.push_back(product);
+    }
+    cout << "All products: " << endl;
+    
+    for(int i = 0; i < products.size(); i++) {
+        N = products[i] ;
+        Solutions(N) ;
+    }
+}
